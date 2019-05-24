@@ -17,7 +17,7 @@ export default class CompleteSignInup extends Component {
               </div>
               <div style={{ marginTop: '1.5em' }}>
                 <FormGroup>
-                  <Input type="text" placeholder="Description" name="escription" />
+                <Input type="textarea" placeholder="Description" style={{ height: '10em'}} name="description"/>
                 </FormGroup>
               </div>
               <div style={{ marginTop: '1.5em' }}>

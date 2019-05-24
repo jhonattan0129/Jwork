@@ -11,6 +11,7 @@ import RecruiterProfile from './pages/Recruiter/Profile'
 import RecruiterEditProfile from './pages/Recruiter/EditProfile'
 import RecruiterSearchDeveloper from './pages/Recruiter/SearchDeveloper'
 import RecruiterViewDeveloper from './pages/Recruiter/ViewDeveloper'
+import RecruiterCompleteSignInUp from './pages/Recruiter/CompleteSignInUp'
 
 import DeveloperSignInUp from './pages/Developer/SignUp'
 import DeveloperCompleteSignInUp from './pages/Developer/CompleteSigInUp'
@@ -30,6 +31,7 @@ export default class Router extends Component {
             <Route exact path="/" component={Home}/>
             
             <Route exact path="/recruiter/siginup" component={RecuiterSigInUp}/>
+            <Route exact path="/recruiter/complete/siginup" component={RecruiterCompleteSignInUp}/>
             <Route exact path="/recruiter/login" component={RecuiterLogIn}/>
             <Route exact path="/recruiter/home" component={RecruiterHome}/>
             <Route exact path="/recruiter/me" component={RecruiterProfile}/>
@@ -40,11 +42,11 @@ export default class Router extends Component {
             <Route exact path="/developer/siginup" component={DeveloperSignInUp}/>
             <Route exact path="/developer/complete/siginup" component={DeveloperCompleteSignInUp}/>
             <Route exact path="/developer/login" component={DeveloperLogIn}/>
-            <Route exact path="/developer/home" componenet={DeveloperHome}/>
-            <Route exact path="/developer/me" componenet={DeveloperProfile}/>
-            <Route exact path="/developer/me/edit" componenet={DeveloperEditProfile}/>
-            <Route exact path="/developer/search" componenet={DeveloperSearchRecruiter}/>
-            <Route path="/developer/search/recruiter/:id" componenet={DeveloperViewRecruiter}/>
+            <Route exact path="/developer/home" component={DeveloperHome}/>
+            <Route exact path="/developer/me" component={DeveloperProfile}/>
+            <Route exact path="/developer/me/edit" component={DeveloperEditProfile}/>
+            <Route exact path="/developer/search" component={DeveloperSearchRecruiter}/>
+            <Route path="/developer/search/recruiter/:id" component={DeveloperViewRecruiter}/>
 
           </Switch>
         </App>

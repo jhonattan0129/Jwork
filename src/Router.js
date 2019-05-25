@@ -19,8 +19,12 @@ import DeveloperLogIn from './pages/Developer/LogIn'
 import DeveloperHome from './pages/Developer/Home'
 import DeveloperProfile from './pages/Developer/Profile'
 import DeveloperEditProfile from './pages/Developer/EditProfile'
-import DeveloperSearchRecruiter from './pages/Developer/SearchRecruiter'
 import DeveloperViewRecruiter from './pages/Developer/ViewRecruiter'
+import DeveloperProjects from './pages/Developer/Projects'
+import DeveloperWorkExperience from './pages/Developer/WorkExperience'
+import DeveloperLisProjects from './pages/Developer/ListProjects'
+import DeveloperListWorkExperience from './pages/Developer/ListExperience'
+import Chat from './pages/Chat';
 
 export default class Router extends Component {
   render() {
@@ -42,12 +46,16 @@ export default class Router extends Component {
             <Route exact path="/developer/siginup" component={DeveloperSignInUp}/>
             <Route exact path="/developer/complete/siginup" component={DeveloperCompleteSignInUp}/>
             <Route exact path="/developer/login" component={DeveloperLogIn}/>
-            <Route exact path="/developer/home" component={DeveloperHome}/>
+            <Route exact path="/developer/" component={DeveloperHome}/>
             <Route exact path="/developer/me" component={DeveloperProfile}/>
             <Route exact path="/developer/me/edit" component={DeveloperEditProfile}/>
-            <Route exact path="/developer/search" component={DeveloperSearchRecruiter}/>
             <Route path="/developer/search/recruiter/:id" component={DeveloperViewRecruiter}/>
+            <Route exact path="/developer/createProject" component={DeveloperProjects}/>
+            <Route exact path="/developer/workExperience" component={DeveloperWorkExperience}/>
+            <Route exact path="/developer/projects/view" component={DeveloperLisProjects}/>
+            <Route exact path="/developer/workExperience/view" component={DeveloperListWorkExperience}/>
 
+            <Route exact path="/chat" component={Chat} />
           </Switch>
         </App>
 

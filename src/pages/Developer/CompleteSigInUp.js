@@ -1,16 +1,87 @@
 import React, { Component } from 'react'
 import { Container, Form, FormGroup, Button, Input } from 'reactstrap'
 import request from 'superagent'
-
+import moment from 'moment'
 export default class CompleteSignInup extends Component {
+  
+  signInUp(evt){
+    evt.preventDefault()
+    const formData = new window.FormData(evt.target)
+    const firstName = localStorage.getItem('firstName')
+    const lastName = localStorage.getItem('lastName')
+    const email = localStorage.getItem('email')
+    const password = localStorage.getItem('password')
+    const birthdate = moment(formData.get('birthdate')).format('YYYY-MM-DD')
+    const collegeDegree = formData.get('collegeDegree')
+    const description = formData.get('description')
+    const linkedInUrl = formData.get('linkedInUrl')
+    const facebookUrl = formData.get('facebookUrl')
+    const twiterUrl = formData.get('twiterUrl')
+    const technologies = formData.get('technologies')
+    const knowledges = formData.get('knowledges')
+    let isAvailable = formData.get('isAvailable')
+    const availableDescription = formData.get('availableDescription')
+    console.log(firstName)
+    console.log(lastName)
+    console.log(email)
+    console.log(password)
+    console.log(birthdate)
+    console.log(collegeDegree)
+    console.log(description)
+    console.log(linkedInUrl)
+    console.log(facebookUrl)
+    console.log(twiterUrl)
+    console.log(technologies)
+    console.log(knowledges)
+    console.log(availableDescription)
+    if(firstName!='' && lastName!='' && email !='' && password!='' && birthdate!='' && collegeDegree!='' && description!='' && linkedInUrl!='' && facebookUrl!='' && twiterUrl!= ''&& technologies!='' && knowledges!='' && isAvailable!='' && availableDescription!=''){
+      console.log('hola')
+      if(isAvailable=='yes' || isAvailable=='si'){
+        isAvailable=true
+      }else{
+        isAvailable=false
+      }
+
+    console.log(isAvailable)
+      request.post('http://localhost:4200/developers')
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .send({
+        firstName: firstName,
+        lastName: lastName,
+        email:email,
+        password:password,
+        birthdate:birthdate,
+        collegeDegree:collegeDegree,
+        description:description,
+        linkedInUrl:linkedInUrl,
+        facebookUrl:facebookUrl,
+        twitterUrl:twiterUrl,
+        technologies:technologies,
+        knowledges:knowledges,
+        isAvailable:isAvailable,
+        availableDescription:availableDescription
+      }).then(response =>{
+        console.log(response)
+      }).catch(error =>{
+        console.log(error)
+        window.location='/developer/'
+      })
+    }else{
+      alert('campos vacios')
+    }
+  }
+
   render() {
     return (
       <div>
         <Container style={{ boxShadow: '0 0 9px 0 rgba(227,227,227,0.5)', marginTop: '2em', marginBottom: '2em', borderRadius: '10px' }}>
-          <Form>
+          <Form onSubmit={this.signInUp.bind(this)}>
             <div style={{ paddingTop: '3em', paddingBottom: '3em', paddingLeft: '20em', paddingRight: '20em', textAlign: 'center' }}>
               <h4>Complete your Profile</h4>
               <div style={{ marginTop: '2em' }}>
+              <FormGroup>
+                  <Input type="date" name="birthdate" />
+                </FormGroup>
                 <FormGroup>
                   <Input type="text" placeholder="College Degree" name="collegeDegree" />
                 </FormGroup>
@@ -55,11 +126,11 @@ export default class CompleteSignInup extends Component {
               <div style={{ marginTop: '2em' }}>
                 <p style={{ textAlign: 'left' }}>Optional:</p>
                 <FormGroup>
-                  <Input type="text" placeholder="Available Descripción" name="descriptionAvailable" />
+                  <Input type="textarea" placeholder="Available Descripción" name="availableDescription" style={{ height: '7em'}} />
                 </FormGroup>
               </div>
               <div style={{ marginTop: '1.5em' }}>
-                <Button style={{ width: '15em' }}>Complete</Button>
+                <Button style={{ width: '15em' }} type="submit">Complete</Button>
               </div>
             </div>
           </Form>

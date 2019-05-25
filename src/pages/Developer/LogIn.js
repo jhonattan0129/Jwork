@@ -2,52 +2,52 @@ import React, { Component } from 'react'
 import { Container, Form, FormGroup, Button, Input } from 'reactstrap'
 import request from 'superagent'
 
-export default class LogIn extends Component{
-  constructor(props){
-    super(props)
-    this.state={
-      email: '',
-      password: ''
-    }
-  }
-
-  /* login(evt){
+export default class LogIn extends Component {
+  login(evt) {
     evt.preventDefault()
     const formData = new window.FormData(evt.target)
     const email = formData.get('email')
     const password = formData.get('password')
-    request.post('http://loaclhost:4200')
-    .set('Content-Type', 'application/x-www-form-urlencoded')
-    .send({
-      email,
-      password
-    }).then(response =>{
-      if(response.body){
-        console.log('hola')
-      }
-    })
-  } */
-  
+    if (email!='' && password!='') {
+      request.post('http://localhost:4200/developers/session')
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .send({
+          email,
+          password
+        }).then(response => {
+          if(response.body){
+            console.log(response)
+            localStorage.setItem('id', response.body.id)
+            localStorage.setItem('name', response.body.firstName)
+            window.location='/developer/'
+          }else{
+            alert('Usuario y Contraseña Incorrecta')
+          }
+        })
+    }
 
-  render(){
-    return(
+  }
+
+
+  render() {
+    return (
       <div>
         <Container style={{ boxShadow: '0 0 9px 0 rgba(227,227,227,0.5)', marginTop: '5em', marginBottom: '2em', borderRadius: '10px' }}>
-          <Form>
-            <div style={{ paddingTop: '3em', paddingBottom: '3em', paddingLeft: '20em', paddingRight: '20em', textAlign: 'center'}}>
+          <Form onSubmit={this.login.bind(this)}>
+            <div style={{ paddingTop: '3em', paddingBottom: '3em', paddingLeft: '20em', paddingRight: '20em', textAlign: 'center' }}>
               <h4>Enter as a Developer</h4>
-              <div style={{ marginTop: '2em'}}>
+              <div style={{ marginTop: '2em' }}>
                 <FormGroup>
-                  <Input placeholder="Email" type="email" name="email"  size="20"/>
+                  <Input placeholder="Email" type="email" name="email" size="20" />
                 </FormGroup>
               </div>
-              <div style={{ marginTop: '1.5em'}}>
+              <div style={{ marginTop: '1.5em' }}>
                 <FormGroup>
                   <Input placeholder="Password" type="password" name="password" />
                 </FormGroup>
               </div>
-              <div style={{ marginTop: '2em'}}>
-                <Button style={{ width: '15em'}}>Enter</Button>
+              <div style={{ marginTop: '2em' }}>
+                <Button style={{ width: '15em' }} type="submit">Enter</Button>
               </div>
             </div>
           </Form>

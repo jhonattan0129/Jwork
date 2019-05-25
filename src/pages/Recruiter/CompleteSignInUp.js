@@ -1,8 +1,47 @@
 import React, { Component } from 'react'
 import { Container, Form, FormGroup, Button, Input } from 'reactstrap'
 import request from 'superagent'
+import moment from 'moment'
 
 export default class CompleteSignInup extends Component {
+  signInUp(evt){
+    evt.preventDefault()
+    const formData = new window.FormData(evt.target)
+    const firstName = localStorage.getItem('firstName')
+    const lastName = localStorage.getItem('lastName')
+    const email = localStorage.getItem('email')
+    const password = localStorage.getItem('password')
+    const birthdate = moment(formData.get('birthdate')).format('YYYY-MM-DD')
+    const bio = formData.get('bio')
+    const description = formData.get('description')
+    console.log(firstName)
+    console.log(lastName)
+    console.log(email)
+    console.log(password)
+    console.log(birthdate)
+    console.log(bio)
+    console.log(description)
+    if(firstName!='' && lastName!='' && email !='' && password!='' && birthdate!='' && bio!='' && description!='' ){
+      console.log('hola')
+      request.post('http://localhost:4200/recruiters')
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .send({
+        firstName: firstName,
+        lastName: lastName,
+        email:email,
+        password:password,
+        birthdate:birthdate,        
+        description:description,
+        bio:bio
+      }).then(response =>{
+        console.log(response)
+      }).catch(error =>{
+        console.log(error)
+      })
+    }else{
+      alert('campos vacios')
+    }
+  }
   render() {
     return (
       <div>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Container } from 'reactstrap'
+import { Container, Button } from 'reactstrap'
 import Projects from '../../components/Developer/Projects'
 import Experience from '../../components/Developer/experience'
 import { Link } from 'react-router-dom'
+import NavBar from '../../components/Developer/NavBar'
 
 export default class Profile extends Component {
   freeTime() {
@@ -27,9 +28,16 @@ export default class Profile extends Component {
   TimeAvailability(){
 
   }
+  createExperience(){
+    window.location='/developer/workExperience'
+  }
+  createProject(){
+    window.location='/developer/createProject'
+  }
   render() {
     return (
       <div>
+        <NavBar></NavBar>
         <Container style={{ boxShadow: '0 0 9px 0 rgba(227,227,227,0.5)', marginTop: '2em', marginBottom: '2em', borderRadius: '10px' }}>
           <div style={{ paddingTop: '3em', paddingBottom: '2em' }}>
             <div className="row">
@@ -42,7 +50,7 @@ export default class Profile extends Component {
               </div>
               <div className="col-3">
                 <div style={{ alignItems: 'center', textAlign: 'center' }}>
-                  <Link to="/recruiter/me/edit">
+                  <Link to="/developer/me/edit">
                     <img src={process.env.PUBLIC_URL + '/images/edit.png'} style={{ width: '1em' }} />
                   </Link>
                 </div>
@@ -63,16 +71,18 @@ export default class Profile extends Component {
               </div>
               <div>
                 <h5>Porojects:</h5>
-                <div style={{ width: '40em' }}>
+                <div style={{ width: '40em', paddingBottom: '1em' }}>
                   <Projects></Projects>
-                  <Link to="/"><p>Ver mas</p></Link>
+                  <Link to="/developer/projects/view"><p>Ver mas</p></Link>
+                  <Button onClick={this.createProject} color="primary">Create new Projects</Button>
                 </div>
               </div>
               <div>
                 <h5>work experience:</h5>
-                <div style={{ width: '40em' }}>
+                <div style={{ width: '40em', paddingBottom: '1em' }}>
                   <Experience></Experience>
-                  <Link to="/"><p>Ver mas</p></Link>
+                  <Link to="/developer/workExperience/view"><p>Ver mas</p></Link>
+                  <Button onClick={this.createExperience} color="primary">Create new Experience</Button>
                 </div>
               </div>
             </div>

@@ -1,38 +1,66 @@
 import React, { Component } from 'react'
 import { Container } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import request from 'superagent'
+import host from '../../extras/host'
 
 export default class ViewDeveloper extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      isLoaded: false,
+      recruiter: false
+    }
+  }
+
+  componentDidMount() {
+    request.get(`${host.getHost()}/recruiters?id=${localStorage.getItem('recruiterId')}`).then(response => {
+      this.setState({
+        isLoaded: true,
+        recruiter: response.body
+      })
+    }).catch(error => {
+      console.log(error)
+    })
+  }
+
   render() {
-    return (
-      <div>
-        <Container style={{ boxShadow: '0 0 9px 0 rgba(227,227,227,0.5)', marginTop: '2em', paddingBottom: '2em', borderRadius: '10px' }}>
-          <div style={{ paddingTop: '2em' }}>
-            <div className="row">
-              <div className="col-3">
-              </div>
-              <div className="col-6">
-                <h4 style={{ color: 'black' }}>Name</h4>
-                <h5>LastName</h5>
-                <p>University tittle</p>
-              </div>
-              <div className="col-3">
-                <div style={{ alignItems: 'center', textAlign: 'center' }}>
-                  <Link to="/recruiter/me/edit">
-                    <img src={process.env.PUBLIC_URL + '/images/edit.png'} style={{ width: '1em' }} />
-                  </Link>
+    if (!this.state.isLoaded) {
+      return (
+        <div></div>
+      )
+    } else {
+      return (
+        <div>
+          <Container style={{ boxShadow: '0 0 9px 0 rgba(227,227,227,0.5)', marginTop: '2em', paddingBottom: '2em', borderRadius: '10px' }}>
+            <div style={{ paddingTop: '2em' }}>
+              <div className="row">
+                <div className="col-3">
+                </div>
+                <div className="col-6" style={{ marginTop: '3em' }}>
+                  <h4 style={{ color: 'black' }}>{this.state.recruiter.firstName}</h4>
+                  <h5>{this.state.recruiter.lastName}</h5>
+                </div>
+                <div className="col-3">
+                  <div style={{ alignItems: 'center', textAlign: 'center' }}>
+                    <Link to="/recruiter/me/edit">
+                      <img src={process.env.PUBLIC_URL + '/images/edit.png'} style={{ width: '1em' }} />
+                    </Link>
+                  </div>
                 </div>
               </div>
+              <div style={{ marginLeft: '2em', marginTop: '5em' }}>
+                <h5>Biography:</h5>
+                <p>{this.state.recruiter.bio}</p>
+                <h5>Description:</h5>
+                <p>{this.state.recruiter.description}</p>
+              </div>
             </div>
-            <div style={{ marginLeft: '2em' }}>
-              <h5>Biography:</h5>
-              <p></p>
-              <h5>Description:</h5>
-              <p></p>
-            </div>
-          </div>
-        </Container>
-      </div>
-    )
+          </Container>
+        </div>
+      )
+    }
   }
+    
 }

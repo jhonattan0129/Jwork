@@ -1,5 +1,5 @@
 module.exports = {
   getHost: function() {
-    return 'http://locahost:4200'
+    return 'http://localhost:4200'
   }
 }

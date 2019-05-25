@@ -14,13 +14,6 @@ export default class CompleteSignInup extends Component {
     const birthdate = moment(formData.get('birthdate')).format('YYYY-MM-DD')
     const bio = formData.get('bio')
     const description = formData.get('description')
-    console.log(firstName)
-    console.log(lastName)
-    console.log(email)
-    console.log(password)
-    console.log(birthdate)
-    console.log(bio)
-    console.log(description)
     if(firstName!='' && lastName!='' && email !='' && password!='' && birthdate!='' && bio!='' && description!='' ){
       console.log('hola')
       request.post('http://localhost:4200/recruiters')
@@ -35,6 +28,12 @@ export default class CompleteSignInup extends Component {
         bio:bio
       }).then(response =>{
         console.log(response)
+        localStorage.removeItem('firstName')
+        localStorage.removeItem('lastName')
+        localStorage.removeItem('email')
+        localStorage.removeItem('password')
+        localStorage.setItem('recruiterId', response.body.id)
+        window.location = '/recruiter/home'
       }).catch(error =>{
         console.log(error)
       })
@@ -46,9 +45,14 @@ export default class CompleteSignInup extends Component {
     return (
       <div>
         <Container style={{ boxShadow: '0 0 9px 0 rgba(227,227,227,0.5)', marginTop: '2em', marginBottom: '2em', borderRadius: '10px' }}>
-          <Form>
+          <Form onSubmit={this.signInUp.bind(this)}>
             <div style={{ paddingTop: '3em', paddingBottom: '3em', paddingLeft: '20em', paddingRight: '20em', textAlign: 'center' }}>
               <h4>Please Complete your Profile</h4>
+              <div style={{ marginTop: '2em' }}>
+                <FormGroup>
+                  <Input type="date" name="birthdate" />
+                </FormGroup>
+              </div>
               <div style={{ marginTop: '2em' }}>
                 <FormGroup>
                   <Input type="textarea" placeholder="Description" style={{ height: '10em'}} name="description" />
@@ -60,7 +64,7 @@ export default class CompleteSignInup extends Component {
                 </FormGroup>
               </div>              
               <div style={{ marginTop: '1.5em' }}>
-                <Button style={{ width: '15em' }}>Complete</Button>
+                <Button type="submit" style={{ width: '15em' }}>Complete</Button>
               </div>
             </div>
           </Form>

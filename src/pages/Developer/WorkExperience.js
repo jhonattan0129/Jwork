@@ -1,8 +1,34 @@
 import React, { Component } from 'react'
 import { Container, Form, FormGroup, Input, Button } from 'reactstrap'
+import request from 'superagent'
+import host from '../../extras/host'
+
 export default class WorkExperience extends Component {
   createExperience(evt){
     evt.preventDefault()
+    const formData = new window.FormData(evt.target)
+    const company = formData.get('company')
+    const role = formData.get('rol')
+    const duration = formData.get('time')
+    const description = formData.get('description')
+    const developerId = localStorage.getItem('id')
+    if (company != '' && role != '' && duration != '' && description != '') {
+      request.post(`${host.getHost()}/developers/experiences`)
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .send({
+        company,
+        role,
+        duration,
+        description,
+        developerId
+      })
+      .then(response => {
+        console.log(response)
+        window.location = '/developer/me'
+      }).catch(error => {
+        console.log(error)
+      })
+    }
   }
   render() {
     return (
@@ -25,7 +51,7 @@ export default class WorkExperience extends Component {
                     </div>
                     <div>
                       <FormGroup>
-                        <Input type="number" placeholder="Duration" name="time" />
+                        <Input type="text" placeholder="Duration" name="time" />
                       </FormGroup>
                     </div>
                     <div>

@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import { Container } from 'reactstrap'
+import moment from 'moment'
 
 export default class Projects extends Component {
+  componentDidMount() {
+    console.log(this.props.project)
+  }
+
   render() {
     return (
       <div >
@@ -9,15 +14,15 @@ export default class Projects extends Component {
           <div className="row" style={{ paddingTop: '1em' }}>
             <div className="col-9">
               <div>
-                <p>Name Project</p>
-                <p>url</p>
-                <p>Repository</p>
+                <p>{this.props.project.name}</p>
+                <p><b>URL:</b> {this.props.project.url}</p>
+                <p><b>Repository:</b> {this.props.project.repositoryUrl}</p>
               </div>
             </div>
             <div className="col-3" style={{ textAlign: 'right' }}>
               <div style={{ marginRight: '2em' }}>
-                <p>status</p>
-                <p>date</p>
+                <p>{this.props.project.status}</p>
+                <p>{moment(this.props.project.endDate).format('ll')}</p>
               </div>
             </div>
           </div>

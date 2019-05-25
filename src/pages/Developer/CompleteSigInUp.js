@@ -21,19 +21,6 @@ export default class CompleteSignInup extends Component {
     const knowledges = formData.get('knowledges')
     let isAvailable = formData.get('isAvailable')
     const availableDescription = formData.get('availableDescription')
-    console.log(firstName)
-    console.log(lastName)
-    console.log(email)
-    console.log(password)
-    console.log(birthdate)
-    console.log(collegeDegree)
-    console.log(description)
-    console.log(linkedInUrl)
-    console.log(facebookUrl)
-    console.log(twiterUrl)
-    console.log(technologies)
-    console.log(knowledges)
-    console.log(availableDescription)
     if(firstName!='' && lastName!='' && email !='' && password!='' && birthdate!='' && collegeDegree!='' && description!='' && linkedInUrl!='' && facebookUrl!='' && twiterUrl!= ''&& technologies!='' && knowledges!='' && isAvailable!='' && availableDescription!=''){
       console.log('hola')
       if(isAvailable=='yes' || isAvailable=='si'){
@@ -61,10 +48,14 @@ export default class CompleteSignInup extends Component {
         isAvailable:isAvailable,
         availableDescription:availableDescription
       }).then(response =>{
-        console.log(response)
+        localStorage.removeItem('firstName')
+        localStorage.removeItem('lastName')
+        localStorage.removeItem('email')
+        localStorage.removeItem('password')
+        localStorage.setItem('id', response.body.id)
+        window.location='/developer/'
       }).catch(error =>{
         console.log(error)
-        window.location='/developer/'
       })
     }else{
       alert('campos vacios')

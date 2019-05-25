@@ -14,7 +14,7 @@ export default class SignUp extends Component{
       localStorage.setItem('lastName', lastName)
       localStorage.setItem('email', email)
       localStorage.setItem('password', password)
-      window.location = '/developer/complete/siginup'
+      window.location = '/recruiter/complete/siginup'
     }else{
       alert('Campos Incompletos')
     }

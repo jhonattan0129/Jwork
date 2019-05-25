@@ -1,10 +1,39 @@
 import React, { Component } from 'react'
 import { Container, Form, FormGroup, Input, Button } from 'reactstrap'
-
+import request from 'superagent'
+import host from '../../extras/host'
 
 export default class Projects extends Component {
   createProject(evt){
     evt.preventDefault()
+    const formData = new window.FormData(evt.target)
+    const name = formData.get('tittle')
+    const url = formData.get('url')
+    const repositoryUrl = formData.get('repository')
+    const description = formData.get('description')
+    const status = formData.get('status')
+    const date = formData.get('date')
+    const developerId = localStorage.getItem('id')
+    if (name != '' && url != '' && repositoryUrl != '' && description != '' && status != '' && date != '') {
+      request.post(`${host.getHost()}/developers/projects`)
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .send({
+        name,
+        url,
+        repositoryUrl,
+        description,
+        status,
+        endDate: date,
+        developerId
+      })
+      .then(response => {
+        console.log(response)
+        window.location = '/developer/me'
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+    
   }
   render() {
     return (

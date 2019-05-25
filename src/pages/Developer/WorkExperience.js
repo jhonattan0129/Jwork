@@ -68,7 +68,7 @@ export default class WorkExperience extends Component {
                   </div>
                 </div>
                 <div className="col-4" style={{ textAlign: 'center' }} >
-                  <Button color="success" type="submit">Create Project</Button>
+                  <Button color="success" type="submit">Register Experience</Button>
                 </div>
               </div>
             </div>

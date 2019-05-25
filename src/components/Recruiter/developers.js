@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 export default class Developer extends Component {
   printTechnologies() {
@@ -23,14 +24,13 @@ export default class Developer extends Component {
           <div>
             <div className="row">
               <div className="col-9">
-                <p><b>{this.props.developer.firstName} {this.props.developer.lastName}</b></p>
+                <p><b><Link to={`/recruiter/search/developer/${this.props.developer.id}`}>{this.props.developer.firstName} {this.props.developer.lastName}</Link></b></p>
                 <p><b>Tecnologies:</b> {this.printTechnologies()}</p>
                 <p><b>Knowledges:</b> {this.printKnowledges()}</p>
                 <p><b>Free Time:</b> {this.props.developer.isAvailable ? 'Yes' : 'No'}</p>
               </div>
               <div className="col-3">
                 <div>
-                  <p>2019-02-29</p>
                 </div>
               </div>
             </div>

@@ -14,7 +14,7 @@ export default class Home extends Component{
         <NavBar></NavBar>
         <Container style={{ boxShadow: '0 0 9px 0 rgba(227,227,227,0.5)', marginTop: '5em'}}>
           <div style={{textAlign: 'center', paddingTop: '3em', paddingBottom: '3em'}}>            
-            <h3>Gracias Por Registarte en Nuestra pagina</h3>
+            <h3>Thank you for Sign up. Enjoy!</h3>
           </div>
         </Container>
       </div>

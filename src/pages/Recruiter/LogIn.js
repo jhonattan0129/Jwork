@@ -17,9 +17,8 @@ export default class LogIn extends Component{
         }).then(response => {
           if(response.body){
             console.log(response)
-            localStorage.setItem('id', response.body.id)
-            localStorage.setItem('name', response.body.firstName)
-            window.location='/developer/'
+            localStorage.setItem('recruiterId', response.body.id)
+            window.location='/recruiter/home'
           }else{
             alert('Usuario y Contraseña Incorrecta')
           }

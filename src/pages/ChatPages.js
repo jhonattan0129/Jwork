@@ -14,6 +14,7 @@ export default class ChatPage extends Component{
               <ChatList></ChatList>
             </div>
           </div>
+          <p style={{ textAlign: 'center' }}><img src={process.env.PUBLIC_URL + '/images/small.png'} /></p>
         </Container>
       </div>
     )

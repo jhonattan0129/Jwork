@@ -10,7 +10,7 @@ export default class ChatList extends Component{
           <div>
             <div className="row">
               <div className="col-9">
-                <Link style={{ color: 'black'}} to="">
+                <Link style={{ color: 'black'}} to="/chat">
                   <p>Nombre de Usuario</p>
                 </Link>
               </div>

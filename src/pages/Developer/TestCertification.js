@@ -14,7 +14,9 @@ export default class TestCertification extends Component{
               <Test></Test>              
             </div>
           </div>
+          <p style={{ textAlign: 'center' }}><img src={process.env.PUBLIC_URL + '/images/small.png'} /></p>
         </Container>
+        
       </div>
     )
   }

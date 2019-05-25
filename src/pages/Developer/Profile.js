@@ -154,7 +154,7 @@ export default class Profile extends Component {
                 <br /><br />
                 <div>
                   <h5>Time Availability:</h5>
-                  {this.freeTime()}
+                  {this.state.developer.isAvailable ? 'Yes' : 'No'}
                   <div>
                     <p>{this.state.developer.availableDescription}</p>
                   </div>

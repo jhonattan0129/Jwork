@@ -33,6 +33,7 @@ export default class Chat extends Component {
               </div>
             </div>
           </Form>
+          <p style={{ textAlign: 'center' }}><img src={process.env.PUBLIC_URL + '/images/small.png'} /></p>
         </Container>
       </div>
     )

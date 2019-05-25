@@ -73,6 +73,7 @@ export default class Profile extends Component {
                 <h5>Porojects:</h5>
                 <div style={{ width: '40em', paddingBottom: '1em' }}>
                   <Projects></Projects>
+                  {console.log(localStorage.getItem('id'))}
                   <Link to="/developer/projects/view"><p>Ver mas</p></Link>
                   <Button onClick={this.createProject} color="primary">Create new Projects</Button>
                 </div>

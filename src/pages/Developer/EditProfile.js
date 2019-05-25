@@ -15,12 +15,16 @@ export default class EditProfile extends Component {
   }
 
   componentDidMount() {
-    request.get(`${host.getHost()}/developers?id=${localStorage.getItem('id')}`).then(response => {
-      this.setState({
-        isLoaded: true,
-        developer: response.body
+    if (localStorage.getItem('id')) {
+      request.get(`${host.getHost()}/developers?id=${localStorage.getItem('id')}`).then(response => {
+        this.setState({
+          isLoaded: true,
+          developer: response.body
+        })
       })
-    })
+    } else {
+      window.location = '/'
+    }
   }
 
   updateProfile(evt) {

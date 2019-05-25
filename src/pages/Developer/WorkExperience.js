@@ -4,6 +4,12 @@ import request from 'superagent'
 import host from '../../extras/host'
 
 export default class WorkExperience extends Component {
+  componentDidMount() {
+    if (!localStorage.getItem('id')) {
+      window.location = '/'
+    }
+  }
+
   createExperience(evt){
     evt.preventDefault()
     const formData = new window.FormData(evt.target)

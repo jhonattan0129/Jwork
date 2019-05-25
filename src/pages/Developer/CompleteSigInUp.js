@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { Container, Form, FormGroup, Button, Input } from 'reactstrap'
 import request from 'superagent'
 import moment from 'moment'
-export default class CompleteSignInup extends Component {
-  
+import Swal from 'sweetalert2'
+
+export default class CompleteSignInup extends Component {  
   signInUp(evt){
     evt.preventDefault()
     const formData = new window.FormData(evt.target)
@@ -21,9 +22,9 @@ export default class CompleteSignInup extends Component {
     const knowledges = formData.get('knowledges')
     let isAvailable = formData.get('isAvailable')
     const availableDescription = formData.get('availableDescription')
-    if(firstName!='' && lastName!='' && email !='' && password!='' && birthdate!='' && collegeDegree!='' && description!='' && linkedInUrl!='' && facebookUrl!='' && twiterUrl!= ''&& technologies!='' && knowledges!='' && isAvailable!='' && availableDescription!=''){
+    if(firstName!='' && lastName!='' && email !='' && password!='' && birthdate!='' && collegeDegree!='' && description!='' && technologies!='' && knowledges!='' && isAvailable!='') {
       console.log('hola')
-      if(isAvailable=='yes' || isAvailable=='si'){
+      if(isAvailable == 'Y'){
         isAvailable=true
       }else{
         isAvailable=false
@@ -47,13 +48,19 @@ export default class CompleteSignInup extends Component {
         knowledges:knowledges,
         isAvailable:isAvailable,
         availableDescription:availableDescription
-      }).then(response =>{
-        localStorage.removeItem('firstName')
-        localStorage.removeItem('lastName')
-        localStorage.removeItem('email')
-        localStorage.removeItem('password')
-        localStorage.setItem('id', response.body.id)
-        window.location='/developer/'
+      }).then(response => {
+        Swal.fire(
+          'Thank you',
+          'Enjoy your space',
+          'success'
+        ).then(() => {
+          localStorage.removeItem('firstName')
+          localStorage.removeItem('lastName')
+          localStorage.removeItem('email')
+          localStorage.removeItem('password')
+          localStorage.setItem('id', response.body.id)
+          window.location='/developer/'
+        })
       }).catch(error =>{
         console.log(error)
       })
@@ -111,7 +118,10 @@ export default class CompleteSignInup extends Component {
               </div>
               <div style={{ marginTop: '1.5em' }} >
                 <FormGroup>
-                  <Input type="text" placeholder="Is Available" name="isAvailable" />
+                  <Input type="select" placeholder="Is Available" name="isAvailable">
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                  </Input>
                 </FormGroup>
               </div>
               <div style={{ marginTop: '2em' }}>

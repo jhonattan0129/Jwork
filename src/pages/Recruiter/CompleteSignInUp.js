@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Container, Form, FormGroup, Button, Input } from 'reactstrap'
 import request from 'superagent'
 import moment from 'moment'
+import Swal from 'sweetalert2'
 
 export default class CompleteSignInup extends Component {
   signInUp(evt){
@@ -27,13 +28,18 @@ export default class CompleteSignInup extends Component {
         description:description,
         bio:bio
       }).then(response =>{
-        console.log(response)
-        localStorage.removeItem('firstName')
-        localStorage.removeItem('lastName')
-        localStorage.removeItem('email')
-        localStorage.removeItem('password')
-        localStorage.setItem('recruiterId', response.body.id)
-        window.location = '/recruiter/home'
+        Swal.fire(
+          'Thank you',
+          'Enjoy your space',
+          'success'
+        ).then(() => {
+          localStorage.removeItem('firstName')
+          localStorage.removeItem('lastName')
+          localStorage.removeItem('email')
+          localStorage.removeItem('password')
+          localStorage.setItem('recruiterId', response.body.id)
+          window.location = '/recruiter/home'
+        })
       }).catch(error =>{
         console.log(error)
       })

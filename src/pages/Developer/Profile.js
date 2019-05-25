@@ -20,26 +20,31 @@ export default class Profile extends Component {
   }
 
   componentDidMount() {
-    console.log(localStorage.getItem('id'))
-    request.get(`${host.getHost()}/developers?id=${localStorage.getItem('id')}`).then(response => {
-      this.setState({
-        isLoaded: true,
-        developer: response.body
+    if (localStorage.getItem('id')) {
+      console.log(localStorage.getItem('id'))
+      request.get(`${host.getHost()}/developers?id=${localStorage.getItem('id')}`).then(response => {
+        this.setState({
+          isLoaded: true,
+          developer: response.body
+        })
+        console.log(response.body)
+      }).catch(err => {
+        console.log(err)
       })
-      console.log(response.body)
-    }).catch(err => {
-      console.log(err)
-    })
-    request.get(`${host.getHost()}/developers/projects?developerId=${localStorage.getItem('id')}`).then(projects => {
-      this.setState({
-        projects
+      request.get(`${host.getHost()}/developers/projects?developerId=${localStorage.getItem('id')}`).then(projects => {
+        this.setState({
+          projects
+        })
       })
-    })
-    request.get(`${host.getHost()}/developers/experiences?developerId=${localStorage.getItem('id')}`).then(experiences => {
-      this.setState({
-        experiences
+      request.get(`${host.getHost()}/developers/experiences?developerId=${localStorage.getItem('id')}`).then(experiences => {
+        this.setState({
+          experiences
+        })
       })
-    })
+    } else {
+      window.location = '/'
+    }
+    
   }
 
   freeTime() {
@@ -139,6 +144,7 @@ export default class Profile extends Component {
                 {this.state.developer.facebookUrl ? <div><a href={this.state.developer.facebookUrl}>{this.state.developer.facebookUrl}</a></div> : <span></span>}
                 {this.state.developer.twitterUrl ? <div><a href={this.state.developer.twitterUrl}>{this.state.developer.twitterUrl}</a></div> : <span></span>}
                 {this.state.developer.linkedInUrl ? <div><a href={this.state.developer.linkedInUrl}>{this.state.developer.linkedInUrl}</a></div> : <span></span>}
+                <br />
                 <h5>Tecnologies:</h5>
                 {this.technologies()}
                 <br /><br />

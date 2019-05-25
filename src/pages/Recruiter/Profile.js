@@ -3,6 +3,7 @@ import { Container } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import request from 'superagent'
 import host from '../../extras/host'
+import Navbar from '../../components/Recruiter/NavBar'
 
 export default class ViewDeveloper extends Component {
   constructor(props) {
@@ -15,14 +16,19 @@ export default class ViewDeveloper extends Component {
   }
 
   componentDidMount() {
-    request.get(`${host.getHost()}/recruiters?id=${localStorage.getItem('recruiterId')}`).then(response => {
-      this.setState({
-        isLoaded: true,
-        recruiter: response.body
+    if (localStorage.getItem('recruiterId')) {
+      request.get(`${host.getHost()}/recruiters?id=${localStorage.getItem('recruiterId')}`).then(response => {
+        this.setState({
+          isLoaded: true,
+          recruiter: response.body
+        })
+      }).catch(error => {
+        console.log(error)
       })
-    }).catch(error => {
-      console.log(error)
-    })
+    } else {
+      window.location = '/'
+    }
+    
   }
 
   render() {
@@ -33,6 +39,7 @@ export default class ViewDeveloper extends Component {
     } else {
       return (
         <div>
+          <Navbar />
           <Container style={{ boxShadow: '0 0 9px 0 rgba(227,227,227,0.5)', marginTop: '2em', paddingBottom: '2em', borderRadius: '10px' }}>
             <div style={{ paddingTop: '2em' }}>
               <div className="row">

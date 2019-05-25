@@ -2,6 +2,20 @@ import React, { Component } from 'react'
 import { Container } from 'reactstrap'
 
 export default class Developer extends Component {
+  printTechnologies() {
+    let technologies = this.props.developer.technologies.split(',')
+    return technologies.map((techno, index) => {
+      return <span key={index} style={{ backgroundColor: 'darkgrey', padding: '0.3em 0.5em', marginLeft: '0.5em', borderRadius: '5px', color: 'white' }}>{techno}</span>
+    })
+  }
+
+  printKnowledges() {
+    let knowledges = this.props.developer.knowledges.split(',')
+    return knowledges.map((knowledge, index) => {
+      return <span key={index} style={{ backgroundColor: 'darkgrey', padding: '0.3em 0.5em', marginLeft: '0.5em', borderRadius: '5px', color: 'white' }}>{knowledge}</span>
+    })
+  }
+
   render() {
     return (
       <div>
@@ -9,10 +23,10 @@ export default class Developer extends Component {
           <div>
             <div className="row">
               <div className="col-9">
-                <p>Juan Cajamarca</p>
-                <p>Tecnologies: Java</p>
-                <p>Work Experience: NativApps</p>
-                <p>Free Time: No</p>
+                <p><b>{this.props.developer.firstName} {this.props.developer.lastName}</b></p>
+                <p><b>Tecnologies:</b> {this.printTechnologies()}</p>
+                <p><b>Knowledges:</b> {this.printKnowledges()}</p>
+                <p><b>Free Time:</b> {this.props.developer.isAvailable ? 'Yes' : 'No'}</p>
               </div>
               <div className="col-3">
                 <div>

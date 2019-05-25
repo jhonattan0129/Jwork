@@ -15,12 +15,16 @@ export default class ViewDeveloper extends Component {
   }
 
   componentDidMount() {
-    request.get(`${host.getHost()}/recruiters?id=${localStorage.getItem('recruiterId')}`).then(response => {
-      this.setState({
-        isLoaded: true,
-        recruiter: response.body
+    if (localStorage.getItem('recruiterId')) {
+      request.get(`${host.getHost()}/recruiters?id=${localStorage.getItem('recruiterId')}`).then(response => {
+        this.setState({
+          isLoaded: true,
+          recruiter: response.body
+        })
       })
-    })
+    } else {
+      window.location = '/'
+    }
   }
 
   updateRecruiter(evt) {

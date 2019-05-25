@@ -125,6 +125,7 @@ export default class Profile extends Component {
             <div style={{ paddingTop: '3em', paddingBottom: '2em' }}>
               <div className="row">
                 <div className="col-3">
+                  <img src={process.env.PUBLIC_URL + '/images/user.png'} style={{ width: '10em', marginLeft: '3em' }} />
                 </div>
                 <div className="col-6">
                   <h4 style={{ color: 'black' }}>{this.state.developer.firstName}</h4>

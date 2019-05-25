@@ -44,6 +44,7 @@ export default class ViewDeveloper extends Component {
             <div style={{ paddingTop: '2em' }}>
               <div className="row">
                 <div className="col-3">
+                  <img src={process.env.PUBLIC_URL + '/images/user.png'} />
                 </div>
                 <div className="col-6" style={{ marginTop: '3em' }}>
                   <h4 style={{ color: 'black' }}>{this.state.recruiter.firstName}</h4>

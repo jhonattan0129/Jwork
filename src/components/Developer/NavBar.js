@@ -12,12 +12,11 @@ export default class NavBar extends Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/developer/">Jwork</NavbarBrand>
+          <NavbarBrand href="/developer/"><img src={process.env.PUBLIC_URL + '/images/jwork.png'} /></NavbarBrand>
           <Nav className="ml-auto" navbar>
             <Link to="/developer/me" style={{ color: 'black', marginLeft: '1em' }}><NavItem>Profile</NavItem></Link>
             <Link to="/" style={{ color: 'black', marginLeft: '1em' }}><NavItem>Message</NavItem></Link>
-            <Link to="/" style={{ color: 'black', marginLeft: '1em' }}><NavItem>LogOut</NavItem></Link>            
-            
+            <Link to="/" style={{ color: 'black', marginLeft: '1em' }}><NavItem>LogOut</NavItem></Link>           
           </Nav>
         </Navbar>
       </div>

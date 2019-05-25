@@ -24,7 +24,12 @@ import DeveloperProjects from './pages/Developer/Projects'
 import DeveloperWorkExperience from './pages/Developer/WorkExperience'
 import DeveloperLisProjects from './pages/Developer/ListProjects'
 import DeveloperListWorkExperience from './pages/Developer/ListExperience'
+import DetailsExperience from './pages/Developer/DetailsExperience'
+import DetailsProjects from './pages/Developer/DetailsProject'
+
 import Chat from './pages/Chat';
+import Messages from './pages/ChatPages'
+
 
 export default class Router extends Component {
   render() {
@@ -54,8 +59,11 @@ export default class Router extends Component {
             <Route exact path="/developer/workExperience" component={DeveloperWorkExperience}/>
             <Route exact path="/developer/projects/view" component={DeveloperLisProjects}/>
             <Route exact path="/developer/workExperience/view" component={DeveloperListWorkExperience}/>
+            <Route path="/developer/experience/details/:id" component={DetailsExperience} />
+            <Route path="/developer/project/details/:id" component={DetailsProjects} />
 
             <Route exact path="/chat" component={Chat} />
+            <Route exact path="/messages" component={Messages} />
           </Switch>
         </App>
 

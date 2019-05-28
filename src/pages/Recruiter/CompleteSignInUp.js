@@ -70,7 +70,7 @@ export default class CompleteSignInup extends Component {
                 </FormGroup>
               </div>              
               <div style={{ marginTop: '1.5em' }}>
-                <Button type="submit" style={{ width: '15em' }}>Complete</Button>
+                <Button type="submit" style={{ width: '15em', background: '#05BEDA', borderColor: '#05BEDA' }}>Complete</Button>
               </div>
             </div>
           </Form>

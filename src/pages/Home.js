@@ -22,8 +22,8 @@ export default class Home extends Component{
             <div style={{ textAlign: 'center'}}>
               <p>Meet a new world Register now</p>
               <div>
-                <Button color="primary" onClick={this.signInUpRecruiter}>SignIn Up Recruiter</Button>
-                <Button color="primary" onClick={this.signInUpDeveloper} style={{ marginLeft: '1em' }}>SignIn Up Developer</Button>
+                <Button color="primary" onClick={this.signInUpRecruiter} style={{  background: '#05BEDA', borderColor: '#05BEDA' }}>SignIn Up Recruiter</Button>
+                <Button color="primary" onClick={this.signInUpDeveloper} style={{ marginLeft: '1em', background: '#05BEDA', borderColor: '#05BEDA' }}>SignIn Up Developer</Button>
               </div>
             </div>
           </Container>

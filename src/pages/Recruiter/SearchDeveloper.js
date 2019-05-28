@@ -78,7 +78,7 @@ export default class SearchDeveloper extends Component {
                         <Input type="text" name="knowledges" />
                       </FormGroup>
                     </div>
-                    <Button type="submit" color="success">Filter</Button>
+                    <Button type="submit" color="success" style={{ width: '8em', background: '#05BEDA', borderColor: '#05BEDA'}}>Filter</Button>
                   </Form>
                 </div>
                 <div className="col-9">

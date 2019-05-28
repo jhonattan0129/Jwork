@@ -18,8 +18,8 @@ export default class NavBar extends Component {
               </Link>
             </NavbarBrand>
           <Nav className="ml-auto" navbar>
-            <Link to="/developer/login" style={{ color: 'black', marginLeft: '1em' }}><NavItem>LogIn Developer</NavItem></Link>
-            <Link to="/recruiter/login" style={{ color: 'black', marginLeft: '1em' }}><NavItem>LogIn Recruiter</NavItem></Link>
+            <Link to="/developer/login" style={{ color: '#8d8d8d', marginLeft: '1em', textDecoration: 'none' }}><NavItem>LogIn Developer</NavItem></Link>
+            <Link to="/recruiter/login" style={{ color: '#8d8d8d', marginLeft: '1em', textDecoration: 'none' }}><NavItem>LogIn Recruiter</NavItem></Link>
           </Nav>
         </Navbar>
       </div>

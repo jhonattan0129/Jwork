@@ -19,10 +19,10 @@ export default class NavBar extends Component {
         <Navbar color="light" light expand="md">
         <NavbarBrand href="/recruiter/home"><img src={process.env.PUBLIC_URL + '/images/jwork.png'} style={{ width: '10em' }} /></NavbarBrand>
           <Nav className="ml-auto" navbar>
-            <Link to="/recruiter/me" style={{ color: 'black', marginLeft: '1em' }}><NavItem>Profile</NavItem></Link>
-            <Link to="/recruiter/search" style={{ color: 'black', marginLeft: '1em' }}><NavItem>Search Developers</NavItem></Link>
-            <Link to="/messages" style={{ color: 'black', marginLeft: '1em' }}><NavItem>Message</NavItem></Link>
-            <Link onClick={this.signOut} style={{ color: 'black', marginLeft: '1em' }}><NavItem>LogOut</NavItem></Link> 
+            <Link to="/recruiter/me" style={{ color: '#8d8d8d', marginLeft: '1em', textDecoration: 'none' }}><NavItem>Profile</NavItem></Link>
+            <Link to="/recruiter/search" style={{ color: '#8d8d8d', marginLeft: '1em', textDecoration: 'none' }}><NavItem>Search Developers</NavItem></Link>
+            <Link to="/messages" style={{ color: '#8d8d8d', marginLeft: '1em', textDecoration: 'none' }}><NavItem>Message</NavItem></Link>
+            <Link onClick={this.signOut} style={{ color: '#8d8d8d', marginLeft: '1em', textDecoration: 'none' }}><NavItem>LogOut</NavItem></Link> 
           </Nav>
         </Navbar>
       </div>

@@ -44,7 +44,7 @@ export default class LogIn extends Component{
                 </FormGroup>
               </div>
               <div style={{ marginTop: '2em'}}>
-                <Button style={{ width: '15em'}} type="submit">Enter</Button>
+                <Button style={{ width: '15em', background: '#05BEDA', borderColor: '#05BEDA' }} type="submit">Enter</Button>
               </div>
             </div>
           </Form>

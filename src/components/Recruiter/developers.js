@@ -24,7 +24,7 @@ export default class Developer extends Component {
           <div>
             <div className="row">
               <div className="col-9">
-                <p><b><Link to={`/recruiter/search/developer/${this.props.developer.id}`}>{this.props.developer.firstName} {this.props.developer.lastName}</Link></b></p>
+                <p><b><Link to={`/recruiter/search/developer/${this.props.developer.id}`} style={{ textDecoration: 'none'}}>{this.props.developer.firstName} {this.props.developer.lastName}</Link></b></p>
                 <p><b>Tecnologies:</b> {this.printTechnologies()}</p>
                 <p><b>Knowledges:</b> {this.printKnowledges()}</p>
                 <p><b>Free Time:</b> {this.props.developer.isAvailable ? 'Yes' : 'No'}</p>

@@ -67,7 +67,7 @@ export default class Profile extends Component {
     let technologies = this.state.developer.technologies.split(',')
     return technologies.map((techno, index) => {
       return (
-        <span style={{ backgroundColor: 'darkgrey', color: 'white', padding: '0.3em 0.5em', marginLeft: '0.5em', borderRadius: '5px' }}>{techno}</span>
+        <span style={{ backgroundColor: '#05BEDA', color: 'white', padding: '0.3em 0.5em', marginLeft: '0.5em', borderRadius: '5px' }}>{techno}</span>
       )
     })
   }
@@ -75,7 +75,7 @@ export default class Profile extends Component {
     let knowledges = this.state.developer.knowledges.split(',')
     return knowledges.map((knowledge, index) => {
       return (
-        <span style={{ backgroundColor: 'darkgrey', color: 'white', padding: '0.3em 0.5em', marginLeft: '0.5em', borderRadius: '5px' }}>{knowledge}</span>
+        <span style={{ backgroundColor: '#05BEDA', color: 'white', padding: '0.3em 0.5em', marginLeft: '0.5em', borderRadius: '5px' }}>{knowledge}</span>
       )
     })
   }
@@ -164,14 +164,14 @@ export default class Profile extends Component {
                   <h5>Projects:</h5>
                   <div style={{ width: '40em', paddingBottom: '1em' }}>
                     {this.getProjects()}
-                    <Button onClick={this.createProject} color="primary">Create new Projects</Button>
+                    <Button onClick={this.createProject} style={{  background: '#05BEDA', borderColor: '#05BEDA' }} >Create new Projects</Button>
                   </div>
                 </div>
                 <div>
                   <h5>Work experience:</h5>
                   <div style={{ width: '40em', paddingBottom: '1em' }}>
                     {this.getExperiences()}
-                    <Button onClick={this.createExperience} color="primary">Create new Experience</Button>
+                    <Button onClick={this.createExperience}  style={{ marginTop: '1em', background: '#05BEDA', borderColor: '#05BEDA'}}>Create new Experience</Button>
                   </div>
                 </div>
               </div>
